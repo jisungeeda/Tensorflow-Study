@@ -24,10 +24,10 @@ model.predict([a])
 * 사용 예
 ```
 class myCallback(tf.keras.callbacks.Callback):
-	def on\_epoch_end(self, epoch, logs={}):
+	def on_epoch_end(self, epoch, logs={}):
 		if (logs.get('loss') <= 0.35):
-			print('\nloss: {}\ncancelling training'.format(logs.get('loss)))
-			self.model.stop\_training = True
+			print('nloss: {}\ncancelling training'.format(logs.get('loss)))
+			self.model.stop_training = True
 callbacks = myCallback() 
 history = model.fit(xs, ys, epochs=10, callbacks=callbacks)
 ```
@@ -79,12 +79,12 @@ model = tf.keras.Sequential([
     tf.keras.layers.Dense(128, activation='relu'),
     tf.keras.layers.Dense(10, activation='softmax')
 ])
-model.compile(optimizer='adam', loss='sparse\_categorical\_crossentropy', metrics=['accuracy'])
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 ```
 * 각 레이어들의 아웃풋을 찍어보고 싶다면, 
 ```
-layer\_outputs = [layer.output for layer in model.layers]
-model\_copied = tf.keras.models.Model(inputs=model.input, outputs=layer\_outputs)
+layer_outputs = [layer.output for layer in model.layers]
+model_copied = tf.keras.models.Model(inputs=model.input, outputs=layer_outputs)
 ```
 한 뒤에 predict 메소드를 사용하면 된다.
 * 모델을 Sequential 로 정의하는 방법과, Model 로 functional 하게 정의하는 방법이 있다.
@@ -94,7 +94,7 @@ model\_copied = tf.keras.models.Model(inputs=model.input, outputs=layer\_outputs
 	3. 레이어의 모든 층 확인 가능
 * 모델을 그대로 카피하려면,
 ```
-model\_clone = tf.keras.models.clone\_model(model)
+model_clone = tf.keras.models.clone_model(model)
 ```
 * transfer\_learning 을 하기 위해 일부만 카피하려면, tf.keras.models.Model 을 사용하여 inputs 와 outputs 를 적절히 넣어주면 된다.
 * What is a Convolution? A technique to isolate feats in images
